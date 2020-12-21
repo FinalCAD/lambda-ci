@@ -35,7 +35,7 @@ jobs:
         - run: 
             name: install
             command: |
-                brew install terragrunt
+                /usr/bin/brew install terragrunt
         - run: 
             name: checkout repo
             command: |
