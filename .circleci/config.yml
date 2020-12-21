@@ -22,12 +22,7 @@ jobs:
         - run: 
             name: install brew
             command: |
-                git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew 
-                
-        - run: 
-            name: symlink
-            command: |
-                ln -s ~/.linuxbrew/Homebrew/bin/brew /usr/bin && eval $(/usr/bin/brew shellenv)
+                sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
         - run: 
             name: test
             command: |
