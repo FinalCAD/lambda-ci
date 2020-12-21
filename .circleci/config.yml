@@ -47,7 +47,12 @@ jobs:
         - run: 
             name: aws cred
             command: |
-                aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID} && aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY} && aws configure set default.region ${AWS_DEFAULT_REGION}
+                echo "[profile sandbox-eu]
+                      role_arn = arn:aws:iam::760240387743:role/tf-terraform-developer
+                      region = eu-central-1
+                      source_profile = default" >> .aws/conf
+
+
         - run: 
             name: checkout repo
             command: |
@@ -55,7 +60,7 @@ jobs:
         - run: 
             name: plan
             command: |
-                aws lambda get-function --function-name tf-lambda-purge-elasticsearch 
+                aws lambda get-function --function-name tf-lambda-purge-elasticsearch  --profile sandbox-eu
 workflows:
     main:
         jobs:
