@@ -27,7 +27,7 @@ jobs:
         - run: 
             name: symlink
             command: |
-                ln -s ~/.linuxbrew/Homebrew/bin/brew /usr/bin 
+                ln -s ~/.linuxbrew/Homebrew/bin/brew /usr/bin && eval $(/usr/bin/brew shellenv)
         - run: 
             name: test
             command: |
