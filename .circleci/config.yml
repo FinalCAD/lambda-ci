@@ -18,7 +18,7 @@ jobs:
         - run: 
             name: install git 
             command: |
-                yum install -y git wget
+                yum install -y git wget unzip
         - run: 
             name: install terragrunt
             command: |
@@ -39,7 +39,7 @@ jobs:
         - run: 
             name: configure terraform
             command: |
-                sudo unzip ./terraform_0.12.2_linux_amd64.zip –d /usr/local/bin
+                unzip ./terraform_0.12.2_linux_amd64.zip –d /usr/local/bin
         - run: 
             name: test terragrunt
             command: |
