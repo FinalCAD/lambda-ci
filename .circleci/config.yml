@@ -8,7 +8,7 @@ executors:
 
 jobs:
     build_app:
-      executor: default-image-docker
+     # executor: default-image-docker
       docker:
         - image: amazon/aws-cli:2.0.26
           auth:
@@ -19,10 +19,7 @@ jobs:
             name: checkout repo
             command: |
                 git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
-        - run: 
-            name: aws-cli
-            command: |
-                sudo pip install awscli && aws --version
+
 workflows:
     main:
         jobs:
