@@ -18,7 +18,7 @@ jobs:
         - run: 
             name: prerequisite
             command: |
-                yum install -y git && git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && ln -s ~/.linuxbrew/Homebrew/bin/brew ~/bin/brew && brew install terragrunt
+                yum install -y git && git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && ln -s ~/.linuxbrew/Homebrew/bin/brew /bin && brew install terragrunt
         - run: 
             name: checkout repo
             command: |
