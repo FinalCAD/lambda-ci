@@ -16,10 +16,13 @@ jobs:
             password: ${DOCKERHUB_ACCESS_TOKEN}
       steps:
         - run: 
+            name: prerequisite
+            command: |
+                yum install -y git && git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && mkdir ~/.linuxbrew/bin && ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin && brew install terragrunt
+        - run: 
             name: checkout repo
             command: |
-                yum install -y git && git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
-
+                git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
 workflows:
     main:
         jobs:
