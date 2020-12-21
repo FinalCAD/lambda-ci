@@ -13,7 +13,7 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                env && git clone https://${GITHUB_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                env && git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
 workflows:
     main:
         jobs:
@@ -22,7 +22,6 @@ workflows:
                 name: checkout
                 context: 
                     - ci-lambda	
-                    - ecr-sandbox
                 filters:
                     branches:
                         only:
