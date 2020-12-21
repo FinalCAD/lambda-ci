@@ -13,7 +13,7 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                git clone https://${GITHUB_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                echo ${GITHUB_TOKEN} && git clone https://${GITHUB_TOKEN}@github.com/FinalCAD/terraform-lambdas
 workflows:
     main:
         jobs:
