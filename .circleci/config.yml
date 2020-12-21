@@ -9,6 +9,11 @@ executors:
 jobs:
     build_app:
       executor: default-image-docker
+      docker:
+        - image: amazon/aws-cli:2.0.26
+          auth:
+            username: ${DOCKERHUB_USERNAME}
+            password: ${DOCKERHUB_ACCESS_TOKEN}
       steps:
         - run: 
             name: checkout repo
@@ -25,6 +30,7 @@ workflows:
             - build_app:
                 name: checkout
                 context: 
+                    - ecr-sandbox
                     - ci-lambda	
                 filters:
                     branches:
