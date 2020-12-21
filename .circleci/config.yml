@@ -16,9 +16,18 @@ jobs:
             password: ${DOCKERHUB_ACCESS_TOKEN}
       steps:
         - run: 
-            name: prerequisite
+            name: install git 
             command: |
-                yum install -y git && git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew && ln -s ~/.linuxbrew/Homebrew/bin/brew /bin && brew install terragrunt
+                yum install -y git 
+         - run: 
+            name: install brew
+            command: |
+                git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew 
+                
+         - run: 
+            name: symlink
+            command: |
+                ln -s ~/.linuxbrew/Homebrew/bin/brew /bin
         - run: 
             name: checkout repo
             command: |
