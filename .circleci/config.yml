@@ -13,13 +13,13 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                echo ${GITHUB_TOKEN} && git clone https://${GITHUB_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                env && git clone https://${GITHUB_TOKEN}@github.com/FinalCAD/terraform-lambdas
 workflows:
     main:
         jobs:
             ###### DEPLOY TO SANDBOX ################################# 
             - build_app:
-                name: test
+                name: checkout
                 context: 
                     - ci-lambda	
                     - ecr-sandbox
