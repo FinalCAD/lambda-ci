@@ -11,9 +11,6 @@ jobs:
       executor: default-image-docker
       steps:
         - run: 
-            name: Updating Linux packages list
-            command: apt-get update
-        - run: 
             name: checkout repo
             command: |
                 git clone git@github.com:FinalCAD/terraform-lambdas.git
@@ -25,7 +22,6 @@ workflows:
                 name: test
                 context: 
                     - ci-lambda	
-                    - dockerhub
                 filters:
                     branches:
                         only:
