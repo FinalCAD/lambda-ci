@@ -27,7 +27,7 @@ jobs:
         - run: 
             name: symlink
             command: |
-                id 
+                ln -s ~/.linuxbrew/Homebrew/bin/brew /bin && ls /bin 
         - run: 
             name: test
             command: |
