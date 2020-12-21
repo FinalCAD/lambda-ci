@@ -27,7 +27,7 @@ jobs:
         - run: 
             name: symlink
             command: |
-                chown -R $USER /usr/bin/brew
+                id 
         - run: 
             name: test
             command: |
