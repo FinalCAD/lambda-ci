@@ -47,7 +47,7 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                git clone --single-branch --branch lambda-ci https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
         - run: 
             name: plan
             command: |
