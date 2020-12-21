@@ -1,0 +1,44 @@
+version: 2.1
+executors:
+    default-image-docker:
+        machine:
+            image: ubuntu-1604:202004-01
+
+commands:
+    docker-login:
+        description: Login to Docker registries
+        steps:
+            - run:
+                name: Login Docker Github.com
+                command: echo ${GITHUB_TOKEN} | docker login docker.pkg.github.com --username dummy_user --password-stdin
+            - run:
+                name: Login to https://hub.docker.com/
+                command: |
+                    echo ${DOCKERHUB_ACCESS_TOKEN} | docker login --username ${DOCKERHUB_USERNAME} --password-stdin
+
+jobs:
+    build_app:
+      executor: default-image-docker
+      steps:
+        - docker-login
+        - run: 
+            name: Updating Linux packages list
+            command: apt-get update
+        - run: 
+            name: checkout repo
+            command: |
+                git clone git@github.com:FinalCAD/terraform-lambdas.git
+workflows:
+    main:
+        jobs:
+            ###### DEPLOY TO SANDBOX ################################# 
+            - build_app:
+                name: test
+                context: 
+                    - ci-lambda
+                    - dockerhub
+                filters:
+                    branches:
+                        only:
+                            - develop
+            
