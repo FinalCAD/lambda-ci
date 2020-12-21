@@ -18,7 +18,7 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                sudo apt-get install git && git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
 
 workflows:
     main:
