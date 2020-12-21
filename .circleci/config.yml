@@ -45,15 +45,6 @@ jobs:
             command: |
                 whereis terraform && terraform --version           
         - run: 
-            name: aws cred
-            command: |
-                echo "[profile sandbox-eu]
-                      role_arn = arn:aws:iam::760240387743:role/tf-terraform-developer
-                      region = eu-central-1
-                      source_profile = default" >> .aws/conf
-
-
-        - run: 
             name: checkout repo
             command: |
                 git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
