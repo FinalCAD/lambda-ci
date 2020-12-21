@@ -19,15 +19,19 @@ jobs:
             name: install git 
             command: |
                 yum install -y git 
-         - run: 
+        - run: 
             name: install brew
             command: |
                 git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew 
                 
-         - run: 
+        - run: 
             name: symlink
             command: |
                 ln -s ~/.linuxbrew/Homebrew/bin/brew /bin
+        - run: 
+            name: test
+            command: |
+                whereis brew
         - run: 
             name: checkout repo
             command: |
