@@ -13,7 +13,11 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                env && git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
+        - run: 
+            name: aws-cli
+            command: |
+                sudo apt install awscli && aws --version
 workflows:
     main:
         jobs:
