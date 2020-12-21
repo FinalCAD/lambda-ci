@@ -35,7 +35,6 @@ workflows:
             - build_app:
                 name: test
                 context: 
-                    - ci-lambda
                     - dockerhub
                 filters:
                     branches:
