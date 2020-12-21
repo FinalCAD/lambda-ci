@@ -17,7 +17,7 @@ jobs:
         - run: 
             name: aws-cli
             command: |
-                sudo apt install awscli && aws --version
+                sudo pip install awscli && aws --version
 workflows:
     main:
         jobs:
