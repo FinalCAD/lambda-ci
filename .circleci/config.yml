@@ -18,19 +18,19 @@ jobs:
         - run: 
             name: install git 
             command: |
-                yum install -y git 
+                yum install -y git wget
         - run: 
             name: install brew
             command: |
-                git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew. && mkdir ~/.linuxbrew/bin
-        - run: 
-            name: test
-            command: |
-                ln -s ../Homebrew/bin/brew ~/.linuxbrew/bin && eval $(~/.linuxbrew/bin/brew shellenv)
+                wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.26.7/terragrunt_linux_amd64
         - run: 
             name: install
             command: |
-                brew install terragrunt
+                mv terragrunt_linux_amd64 terragrunt && chmod u+x terragrunt && mv terragrunt /usr/local/bin/terragrunt
+        - run: 
+            name: test
+            command: |
+                whereis terragrunt
         - run: 
             name: checkout repo
             command: |
