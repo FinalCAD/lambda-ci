@@ -40,5 +40,5 @@ workflows:
                 filters:
                     branches:
                         only:
-                            - develop
+                            - circleci-project-setup
             
