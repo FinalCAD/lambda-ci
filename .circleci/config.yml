@@ -33,6 +33,10 @@ jobs:
             command: |
                 whereis brew
         - run: 
+            name: install
+            command: |
+                brew install terragrunt
+        - run: 
             name: checkout repo
             command: |
                 git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
