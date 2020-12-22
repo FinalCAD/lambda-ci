@@ -51,7 +51,9 @@ jobs:
         - run: 
             name: plan
             command: |
-                aws lambda get-function --function-name tf-lambda-purge-elasticsearch
+                cd && ls .aws 
+              
+# aws lambda get-function --function-name tf-lambda-purge-elasticsearch
 workflows:
     main:
         jobs:
