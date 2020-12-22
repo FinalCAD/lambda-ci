@@ -53,6 +53,10 @@ jobs:
             command: |
                 cd && mkdir .aws && echo -e "[profile test] \nrole_arn = arn:aws:iam::760240387743:role/tf-terraform-developer\nsource_profile = default" > .aws/config 
         - run: 
+            name: conf
+            command: |
+                echo -e "[default]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY} > .aws/credentials
+        - run: 
             name: test
             command: |              
                 aws lambda get-function --function-name tf-lambda-purge-elasticsearch --profile test
