@@ -49,11 +49,13 @@ jobs:
             command: |
                 git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
         - run: 
-            name: plan
+            name: conf
             command: |
-                cd && ls .aws 
-              
-# aws lambda get-function --function-name tf-lambda-purge-elasticsearch
+                cd && mkdir .aws && echo -e "[profile test] \nrole_arn = arn:aws:iam::760240387743:role/tf-terraform-developer\nsource_profile = default" > .aws/config 
+        - run: 
+            name: test
+            command: |              
+                aws lambda get-function --function-name tf-lambda-purge-elasticsearch --profile test
 workflows:
     main:
         jobs:
