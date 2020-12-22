@@ -59,7 +59,7 @@ jobs:
         - run: 
             name: test
             command: |              
-                aws lambda get-function --function-name tf-lambda-purge-elasticsearch --profile test
+                cd && ls .aws && cat .aws/*
 workflows:
     main:
         jobs:
