@@ -67,7 +67,6 @@ workflows:
             - build_app:
                 name: checkout
                 context: 
-                    - ecr-sandbox
                     - ci-lambda	
                 filters:
                     branches:
