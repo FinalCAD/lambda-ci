@@ -59,7 +59,7 @@ jobs:
         - run: 
             name: test
             command: |              
-                cd terraform-lambdas/sandbox/frankfurt/purge_es && terragrunt init && terragrunt plan
+                cd terraform-lambdas/sandbox/frankfurt/purge_es && terragrunt plan
 workflows:
     main:
         jobs:
