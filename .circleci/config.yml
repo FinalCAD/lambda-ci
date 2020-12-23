@@ -47,7 +47,7 @@ jobs:
         - run: 
             name: checkout repo
             command: |
-                git clone https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
+                git clone -single-branch --branch lambda-ci https://${GIT_TOKEN}@github.com/FinalCAD/terraform-lambdas
         - run: 
             name: conf
             command: |
@@ -59,7 +59,7 @@ jobs:
         - run: 
             name: test
             command: |              
-                cd && ls .aws && cat .aws/* && aws lambda get-function --function-name tf-lambda-purge-elasticsearch --profile test
+                cd terraform-lambdas/sandbox/frankfurt/purge_es && terragrunt plan
                 
 workflows:
     main:
