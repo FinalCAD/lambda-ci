@@ -59,7 +59,7 @@ jobs:
         - run: 
             name: test
             command: |              
-                cat terraform-lambdas/sandbox/frankfurt/account.tfvars
+                cat terraform-lambdas/sandbox/account.tfvars
                 
 workflows:
     main:
