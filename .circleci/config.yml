@@ -39,7 +39,7 @@ jobs:
         - run: 
             name: configure terraform
             command: |
-                unzip ./terraform_0.12.2_linux_amd64.zip -d /usr/local/bin
+                unzip ./terraform_0.12.25_linux_amd64.zip -d /usr/local/bin
         - run: 
             name: test terragrunt
             command: |
