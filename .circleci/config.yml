@@ -51,7 +51,7 @@ jobs:
         - run: 
             name: conf
             command: |
-                cd && mkdir .aws && echo -e "[profile test] \nrole_arn = arn:aws:iam::760240387743:role/ci-lambda\nsource_profile = default" > .aws/config 
+                cd && mkdir .aws && echo -e "[profile lambda] \nrole_arn = arn:aws:iam::760240387743:role/tf-ci-lambda\nsource_profile = default" > .aws/config 
         - run: 
             name: conf
             command: |
