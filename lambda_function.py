@@ -1,3 +1,5 @@
-# This program prints Hello, world!
-
-print('Hello, world!')
+def lambda_handler(event, context):
+    message = 'Hello {} {}!'.format(event['first_name'], event['last_name'])  
+    return { 
+        'message' : message
+    }
