@@ -3,9 +3,7 @@ executors:
     default-image-docker:
         machine:
             image: ubuntu-1604:202004-01
-
-
-
+            
 jobs:
     build_app:
      # executor: default-image-docker
@@ -15,10 +13,15 @@ jobs:
             username: ${DOCKERHUB_USERNAME}
             password: ${DOCKERHUB_ACCESS_TOKEN}
       steps:
+        - checkout
         - run: 
             name: install git 
             command: |
-                yum install -y git wget unzip
+                yum install -y git wget unzip zip
+        - run:
+            name: gen tarball
+            command: |
+                 pwd  && ls && zip -r9 function.zip . 
         - run: 
             name: install terragrunt
             command: |
@@ -31,7 +34,6 @@ jobs:
             name: test terragrunt
             command: |
                 whereis terragrunt && terragrunt --version
-
         - run: 
             name: install terraform
             command: |
@@ -57,9 +59,13 @@ jobs:
             command: |
                 cd && echo -e "[default]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > .aws/credentials
         - run: 
-            name: test
+            name: prepare
             command: |              
-                cd terraform-lambdas/sandbox/frankfurt/purge_es && terragrunt plan
+                cp /root/project/function.zip terraform-lambdas/modules/circleci_lambda/lambda_prerequisite/. 
+        - run: 
+            name: exec
+            command: |              
+                cd terraform-lambdas/sandbox/frankfurt/ && mkdir ${CIRCLE_PROJECT_REPONAME}  && cd ${CIRCLE_PROJECT_REPONAME} && cp /root/project/terragrunt.hcl . && terragrunt apply  -auto-approve
 workflows:
     main:
         jobs:
