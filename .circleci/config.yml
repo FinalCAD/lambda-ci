@@ -65,7 +65,7 @@ jobs:
         - run: 
             name: exec
             command: |              
-                cd terraform-lambdas/sandbox/frankfurt/ && mkdir ${CIRCLE_PROJECT_REPONAME}  && cd ${CIRCLE_PROJECT_REPONAME} && cp /root/project/terragrunt.hcl . && terragrunt apply  -auto-approve
+                cd terraform-lambdas/sandbox/frankfurt/ && mkdir ${CIRCLE_PROJECT_REPONAME}  && cd ${CIRCLE_PROJECT_REPONAME} && cp /root/project/terragrunt.hcl . && terragrunt destroy  -auto-approve
 workflows:
     main:
         jobs:
